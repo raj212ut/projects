@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration{% endblock title %}
+
+{% block body %}
+<div class="registration-container animate__animated animate__fadeInUp" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 400px; margin: auto; padding: 30px; border: 1px solid #ccc; border-radius: 5px;">
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    <form class="registration-form" action="" method="post">
+        {% csrf_token %}
+        <h2 class="text-center mb-4">Join Our Community</h2>
+        <p class="text-center mb-4">Create an account to access exclusive features and stay updated on the latest health insights.</p>
+        <div class="form-group mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" required class="form-control" placeholder="Enter your username" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+        </div>
+        <div class="form-group mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" name="email" required class="form-control" placeholder="Enter your email address" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+        </div>
+        <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" required class="form-control" placeholder="Choose a strong password" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+        </div>
+        <div class="form-group mb-3">
+            <label for="confirm_password" class="form-label">Confirm Password</label>
+            <input type="password" id="confirm_password" name="confirm_password" required class="form-control" placeholder="Confirm your password" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+            {% if form.errors %}
+                <p style="color: red;">Oops! It seems there was an error. Please check your input and try again.</p>
+            {% endif %}
+        </div>
+        {% if success_message %}
+            <div class="alert alert-success" role="alert">
+                {{ success_message }}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary w-100 mb-3" style="padding: 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Sign Up</button>
+    </form>
+    <div class="login-callout text-center">
+        <p>Already registered? <a href="{% url 'login' %}" class="login-link">Login now</a> to access all features.</p>
+    </div>
+</div>
+<style>
+    .registration-container {
+        width: 400px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }  
+    .registration-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        margin-bottom: 10px;
+    }
+    input {
+        padding: 15px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .login-callout {
+        margin-top: 20px;
+        text-align: center;
+        color: #6B7280;
+    }
+    .login-link {
+        color: #3B82F6;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .login-link:hover {
+        color: #3a61e1;
+    }
+</style>
+
+{% endblock body %}

@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}heart{% endblock title %}
+
+{% block body %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="text-center mb-4 animate__animated animate__bounceIn">
+                <i class="bi bi-heart-pulse text-danger" style="font-size: 4rem;"></i>
+                <h1 class="mt-3 text-danger">Heart Disease Risk Assessment</h1>
+                <p class="text-muted">Enter your health metrics below for an instant risk evaluation</p>
+
+                {% if error %}
+                <div class="alert alert-danger mt-4 animate__animated animate__fadeIn">
+                    <h4 class="mb-0">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Error: {{ error }}
+                    </h4>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="card shadow-lg border-0 rounded-3 animate__animated animate__fadeIn mb-5 bg-light">
+                <div class="card-body p-5" style="background: linear-gradient(135deg, #fff5f5, #ffffff); border-radius: 20px; box-shadow: 0 4px 30px rgba(255, 88, 88, 0.1);">
+                    <form method="post" action="/heart" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <!-- Age -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="age" name="age" placeholder="Age" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="age" class="text-muted"><i class="bi bi-calendar-heart me-2"></i>Age</label>
+                                </div>
+                            </div>
+
+                            <!-- Sex -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select heart-input" id="sex" name="sex" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                    <label for="sex" class="text-muted"><i class="bi bi-gender-ambiguous me-2"></i>Sex</label>
+                                </div>
+                            </div>
+
+                            <!-- Chest Pain Type -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select heart-input" id="cp" name="cp" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                        <option value="0">Typical Angina</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-anginal Pain</option>
+                                        <option value="3">Asymptomatic</option>
+                                    </select>
+                                    <label for="cp" class="text-muted"><i class="bi bi-heartbreak me-2"></i>Chest Pain Type</label>
+                                </div>
+                            </div>
+
+                            <!-- Resting Blood Pressure -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="trestbps" name="trestbps" placeholder="Resting Blood Pressure" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="trestbps" class="text-muted"><i class="bi bi-speedometer2 me-2"></i>Resting BP (mm Hg)</label>
+                                </div>
+                            </div>
+
+                            <!-- Cholesterol -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="chol" name="chol" placeholder="Cholesterol" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="chol" class="text-muted"><i class="bi bi-droplet-half me-2"></i>Cholesterol (mg/dl)</label>
+                                </div>
+                            </div>
+
+                            <!-- Fasting Blood Sugar -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select heart-input" id="fbs" name="fbs" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                        <option value="0">≤ 120 mg/dl</option>
+                                        <option value="1">> 120 mg/dl</option>
+                                    </select>
+                                    <label for="fbs" class="text-muted"><i class="bi bi-cup-straw me-2"></i>Fasting Blood Sugar</label>
+                                </div>
+                            </div>
+
+                            <!-- Resting ECG -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="restecg" name="restecg" placeholder="Resting ECG" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="restecg" class="text-muted"><i class="bi bi-heart-pulse me-2"></i>Resting ECG</label>
+                                </div>
+                            </div>
+
+                            <!-- Maximum Heart Rate -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="thalach" name="thalach" placeholder="Max Heart Rate" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="thalach" class="text-muted"><i class="bi bi-heart-arrow me-2"></i>Max Heart Rate</label>
+                                </div>
+                            </div>
+
+                            <!-- Exercise Induced Angina -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select heart-input" id="exang" name="exang" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                    <label for="exang" class="text-muted"><i class="bi bi-heart-fill me-2"></i>Exercise Angina</label>
+                                </div>
+                            </div>
+
+                            <!-- ST Depression -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" step="0.1" class="form-control heart-input" id="oldpeak" name="oldpeak" placeholder="ST Depression" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="oldpeak" class="text-muted"><i class="bi bi-graph-down-arrow me-2"></i>ST Depression</label>
+                                </div>
+                            </div>
+
+                            <!-- Slope -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="slope" name="slope" placeholder="Slope" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="slope" class="text-muted"><i class="bi bi-arrow-up-right me-2"></i>Slope</label>
+                                </div>
+                            </div>
+
+                            <!-- Number of Major Vessels -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="ca" name="ca" placeholder="Major Vessels" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="ca" class="text-muted"><i class="bi bi-heart-half me-2"></i>Major Vessels</label>
+                                </div>
+                            </div>
+
+                            <!-- Thal -->
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="number" class="form-control heart-input" id="thal" name="thal" placeholder="Thal" required style="border: 2px solid #ff6b6b; border-radius: 10px;">
+                                    <label for="thal" class="text-muted"><i class="bi bi-heart-pulse me-2"></i>Thal</label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-lg px-5" style="background: linear-gradient(135deg, #ff6b6b, #ff4757); color: white; border: none; border-radius: 15px; padding: 12px 30px; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); transition: all 0.3s ease;">
+                                    <i class="bi bi-heart-pulse me-2"></i>
+                                    Check Heart Health
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% if output %}
+            <div class="card shadow-lg border-0 rounded-3 animate__animated animate__fadeIn">
+                <div class="card-body text-center p-5">
+                    <h3 class="mb-4">Prediction Result</h3>
+                    <div class="alert {% if output == 'No Heart Disease' %}alert-success{% else %}alert-danger{% endif %}">
+                        <h4 class="mb-0">
+                            <i class="bi {% if output == 'No Heart Disease' %}bi-check-circle{% else %}bi-exclamation-triangle{% endif %} me-2"></i>
+                            {{ output }}
+                        </h4>
+                        <hr>
+                        <div class="mt-3">
+                            {% if output == 'No Heart Disease' %}
+                                <p class="lead">🎉 Great news! Your heart health looks good!</p>
+                                <div class="progress mt-3" style="height: 30px; border-radius: 15px; box-shadow: 0 2px 5px rgba(0, 200, 83, 0.2);">
+                                    <div class="progress-bar" role="progressbar" style="width: 100%; border-radius: 15px; background: linear-gradient(135deg, #4caf50, #66bb6a); font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-heart-fill me-2"></i>
+                                            Healthy Heart
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="mt-3">Keep up the good work with regular checkups and a healthy lifestyle!</p>
+                            {% else %}
+                                <p class="lead">⚠️ We recommend consulting a cardiologist</p>
+                                <div class="progress mt-3" style="height: 30px; border-radius: 15px; box-shadow: 0 2px 5px rgba(255, 0, 0, 0.2);">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%; border-radius: 15px; background: linear-gradient(135deg, #ff4d4d, #ff1a1a); font-weight: bold; font-size: 1.1em; text-shadow: 1px 1px 2px rgba(0,0,0,0.2);" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                            Risk Detected
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="mt-3">Don't worry - early detection is key! Let's work on improving your heart health.</p>
+                            {% endif %}
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-outline-secondary me-2" onclick="window.location.reload()">
+                                <i class="bi bi-arrow-repeat"></i> Test Again
+                            </button>
+                            <button class="btn btn-primary" id="heartTipsButton">
+                                <i class="bi bi-lightbulb"></i> Heart Health Tips
+                            </button>
+                            <div id="heartTipsCard" class="card mt-4" style="display: none;">
+                                <div class="card-body">
+                                    <h5 class="card-title">💖 Heart Health Tips</h5>
+                                    <ul class="list-group list-group-flush" id="heartTipsList">
+                                    </ul>
+                                </div>
+                            </div>
+                            <script>
+                                document.getElementById('heartTipsButton').addEventListener('click', function() {
+                                    const tipsList = document.getElementById('heartTipsList');
+                                    const tipsCard = document.getElementById('heartTipsCard');
+                                    
+                                    if ("{{ output }}" === "Heart Disease Detected") {
+                                        tipsList.innerHTML = `
+                                            <li class="list-group-item">🩺 Schedule a cardiologist appointment immediately</li>
+                                            <li class="list-group-item">💊 Follow prescribed medications strictly</li>
+                                            <li class="list-group-item">🚨 Monitor symptoms and seek emergency care if needed</li>
+                                            <li class="list-group-item">🥗 Start a low-sodium, heart-healthy diet</li>
+                                            <li class="list-group-item">🏃 Begin a supervised exercise program</li>
+                                            <li class="list-group-item">📊 Track blood pressure and cholesterol regularly</li>
+                                        `;
+                                    } else {
+                                        tipsList.innerHTML = `
+                                            <li class="list-group-item">🏃‍♂️ Maintain regular physical activity</li>
+                                            <li class="list-group-item">🥗 Continue eating a balanced, heart-healthy diet</li>
+                                            <li class="list-group-item">🩺 Get annual heart health checkups</li>
+                                            <li class="list-group-item">🧘 Practice stress management techniques</li>
+                                            <li class="list-group-item">🚭 Avoid smoking and limit alcohol</li>
+                                            <li class="list-group-item">😴 Ensure quality sleep of 7-8 hours nightly</li>
+                                        `;
+                                    }
+                                    
+                                    tipsCard.style.display = 'block';
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heart Tips Modal -->
+            <div class="modal fade" id="heartTipsModal" tabindex="-1" aria-labelledby="heartTipsModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="heartTipsModalLabel">💖 Heart Health Tips</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">🏃‍♂️ Exercise regularly (30 mins/day)</li>
+                                <li class="list-group-item">🥗 Eat a heart-healthy diet</li>
+                                <li class="list-group-item">🚭 Avoid smoking and limit alcohol</li>
+                                <li class="list-group-item">😴 Get 7-8 hours of sleep nightly</li>
+                                <li class="list-group-item">🧘 Manage stress effectively</li>
+                                <li class="list-group-item">🩺 Get regular checkups</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

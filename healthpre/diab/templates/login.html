@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<div class="login-container animate__animated animate__fadeInUp" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); width: 400px; margin: auto; padding: 30px; border: 1px solid #ccc; border-radius: 5px;">
+    <h2 class="text-center mb-4">Login to Your Account</h2>
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+        </div>
+    {% endif %}
+    <form class="login-form" action="" method="post">
+        {% csrf_token %}
+        <div class="form-group mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" name="username" required class="form-control" placeholder="Enter your username" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+        </div>
+        <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" required class="form-control" placeholder="Enter your password" style="padding: 15px; border: 2px solid #ccc; border-radius: 5px;">
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mb-3" style="padding: 15px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">Login</button>
+    </form>
+    <div class="register-callout text-center">
+        <p>Don't have an account? <a href="{% url 'registration' %}" class="register-link">Register now</a> to get started.</p>
+    </div>
+</div>
+<style>
+    .login-container {
+        width: 400px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }  
+    .login-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        margin-bottom: 10px;
+    }
+    input {
+        padding: 15px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .register-callout {
+        margin-top: 20px;
+        text-align: center;
+        color: #6B7280;
+    }
+    .register-link {
+        color: #3B82F6;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .register-link:hover {
+        color: #3a61e1;
+    }
+    .welcome-message {
+        font-size: 24px;
+        font-weight: bold;
+        color: #007bff;
+    }
+    .thought-container {
+        color: #6B7280;
+        font-size: 16px;
+    }
+</style>
+{% endblock body %}

@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block title %}Prediction{% endblock title %}
+
+
+{% block body %}
+<div class="container py-5 animate__animated animate__fadeIn">
+    <h2 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">AI-Powered Health Predictions</h2>
+
+    <!-- Main Card -->
+    <div class="card mb-4 shadow-lg animate__animated animate__slideInRight" style="border-radius: 15px; background: linear-gradient(145deg, #ffffff, #f5f5f5);">
+        <div class="card-body p-4">
+            <div class="row">
+                <div class="col-md-8">
+                    <h3 class="mb-3" style="color: #3498db;">
+                        <i class="bi bi-robot me-2"></i>
+                        Multi-Disease Risk Assessment
+                    </h3>
+                    <p class="lead">
+                        <i class="bi bi-stars me-2 text-warning"></i>
+                        Leverage the power of advanced AI to predict your risk for multiple health conditions using state-of-the-art machine learning models.
+                    </p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2">
+                            <i class="bi bi-graph-up"></i> 95% Accuracy
+                        </span>
+                        <span class="badge bg-success me-2">
+                            <i class="bi bi-shield-check"></i> Secure
+                        </span>
+                        <span class="badge bg-info">
+                            <i class="bi bi-clock-history"></i> Real-time
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="position-relative">
+                        <img src="https://img.icons8.com/color/196/000000/artificial-intelligence.png" alt="AI Icon" class="img-fluid">
+                        <div class="position-absolute top-0 end-0">
+                            <i class="bi bi-patch-check-fill text-primary" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Disease Prediction Feature Card -->
+    <div class="card mb-4 shadow-lg animate__animated animate__slideInRight" style="border-radius: 20px; background: linear-gradient(145deg, #ffffff, #f5f5f5); border: 2px solid #e0e0e0;">
+        <div class="card-body p-5">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3 class="mb-4" style="color: #28a745; font-size: 2.5rem;">
+                        <i class="bi bi-clipboard2-pulse-fill me-2" style="font-size: 1.8em;"></i>
+                        Symptom-Based Disease Prediction
+                    </h3>
+                    <p class="lead mb-4" style="font-size: 1.3rem;">
+                        <i class="bi bi-lightbulb-fill me-2 text-warning" style="font-size: 1.5em;"></i>
+                        Discover potential diseases based on your symptoms. Our advanced AI analyzes your input to provide accurate predictions for various health conditions.
+                    </p>
+                    <p class="mb-4" style="font-size: 1.2rem;">
+                        <i class="bi bi-info-square-fill me-2 text-info" style="font-size: 1.5em;"></i>
+                        Input your symptoms to get a disease prediction along with detailed information, recommended precautions, and personalized diet plans.
+                    </p>
+                    <a href="/disease" class="btn btn-lg btn-success mt-3" style="background: linear-gradient(45deg, #28a745, #218838); border: none; padding: 15px 35px; font-size: 1.2rem;">
+                        <i class="bi bi-arrow-right-circle-fill me-2" style="font-size: 1.3em;"></i>
+                        Try Disease Prediction
+                    </a>
+                </div>
+                <div class="col-md-4 text-center position-relative">
+                    <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                        <div class="position-relative mb-4">
+                            <div class="symbol-container bg-primary-gradient rounded-circle p-5 animate__animated animate__pulse animate__infinite" style="width: 180px; height: 180px;">
+                                <i class="bi bi-search-heart-fill text-white" style="font-size: 4.5rem;"></i>
+                            </div>
+                            <div class="position-absolute top-0 start-0 mt-n4 ms-n5">
+                                <i class="bi bi-shield-plus text-success animate__animated animate__fadeInRight" style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="position-absolute top-0 end-0 mt-n4 me-n5">
+                                <i class="bi bi-plus-circle-fill text-warning animate__animated animate__fadeInDown" style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="position-absolute bottom-0 end-0 mb-n4 me-n5">
+                                <i class="bi bi-clipboard2-pulse text-danger animate__animated animate__fadeInLeft" style="font-size: 3rem;"></i>
+                            </div>
+                            <div class="position-absolute bottom-0 start-0 mb-n4 ms-n5">
+                                <i class="bi bi-check2-circle text-info animate__animated animate__fadeInUp" style="font-size: 3rem;"></i>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-around w-100 mt-4">
+                            <i class="bi bi-activity text-primary hover-scale animate__animated animate__fadeInLeft" style="font-size: 2.5rem; transition: all 0.3s ease; animation-delay: 0.2s;"></i>
+                            <i class="bi bi-heart-pulse text-danger hover-scale animate__animated animate__fadeInUp" style="font-size: 2.5rem; transition: all 0.3s ease; animation-delay: 0.4s;"></i>
+                            <i class="bi bi-binoculars text-success hover-scale animate__animated animate__fadeInRight" style="font-size: 2.5rem; transition: all 0.3s ease; animation-delay: 0.6s;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disease Models Section -->
+    <div class="row g-4 mt-2">
+        <!-- Diabetes Model -->
+        <div class="col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+            <div class="card h-100 shadow-sm hover-card" style="border-radius: 10px; transition: transform 0.3s ease;">
+                <div class="card-body text-center">
+                    <i class="bi bi-droplet-fill" style="font-size: 2.5rem; color: #e74c3c;"></i>
+                    <h4 class="mt-3">Diabetes</h4>
+                    <p>95% accuracy in predicting diabetes risk based on health metrics.</p>
+                    <a href="/diabete" class="btn btn-primary mt-2" style="background: linear-gradient(45deg, #e74c3c, #c0392b); border: none;">
+                        <i class="bi bi-arrow-right-circle me-2"></i>
+                        Get Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heart Disease Model -->
+        <div class="col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+            <div class="card h-100 shadow-sm hover-card" style="border-radius: 10px; transition: transform 0.3s ease;">
+                <div class="card-body text-center">
+                    <i class="bi bi-heart-pulse-fill" style="font-size: 2.5rem; color: #27ae60;"></i>
+                    <h4 class="mt-3">Heart Disease</h4>
+                    <p>Advanced cardiac risk assessment using ECG data analysis.</p>
+                    <a href="/heart" class="btn btn-success mt-2" style="background: linear-gradient(45deg, #27ae60, #219a52); border: none;">
+                        <i class="bi bi-clipboard2-pulse me-2"></i>
+                        Get Prediction
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancer Detection -->
+        <div class="col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+            <div class="card h-100 shadow-sm hover-card" style="border-radius: 10px; transition: transform 0.3s ease;">
+                <div class="card-body text-center">
+                    <i class="bi bi-lungs-fill" style="font-size: 2.5rem; color: #8e44ad;"></i>
+                    <h4 class="mt-3">Cancer Detection</h4>
+                    <p>Early cancer detection through image recognition AI.</p>
+                    <a href="#" class="btn btn-purple mt-2" style="background: linear-gradient(45deg, #8e44ad, #6c3483); border: none; color: white;">
+                        <i class="bi bi-microscope me-2"></i>
+                        Coming Soon
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mental Health -->
+        <div class="col-md-3 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+            <div class="card h-100 shadow-sm hover-card" style="border-radius: 10px; transition: transform 0.3s ease;">
+                <div class="card-body text-center">
+                    <i class="bi bi-emoji-smile-fill" style="font-size: 2.5rem; color: #f39c12;"></i>
+                    <h4 class="mt-3">Mental Health</h4>
+                    <p>Behavioral pattern analysis for mental health assessment.</p>
+                    <a href="#" class="btn btn-warning mt-2" style="background: linear-gradient(45deg, #f39c12, #d68910); border: none;">
+                        <i class="bi bi-brain me-2"></i>
+                        Coming Soon
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Technology Section -->
+    <div class="card mt-4 shadow animate__animated animate__fadeIn" style="border-radius: 15px; animation-delay: 0.8s; background: linear-gradient(to right, #2c3e50, #3498db);">
+        <div class="card-body p-4 text-white">
+            <h4 class="card-title">Our Technology Stack</h4>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5><i class="bi bi-cpu-fill me-2"></i>Deep Learning</h5>
+                    <p>Neural networks trained on millions of medical records</p>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="bi bi-graph-up me-2"></i>Machine Learning</h5>
+                    <p>Advanced algorithms for pattern recognition</p>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="bi bi-shield-lock-fill me-2"></i>Data Security</h5>
+                    <p>HIPAA-compliant data processing and storage</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}diabete{% endblock title %}
+
+{% block body %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="text-center mb-4 animate__animated animate__bounceIn">
+                <i class="bi bi-shield-check text-success" style="font-size: 4rem;"></i>
+                <h1 class="mt-3 text-success text-truncate">Diabetes Risk Assessment</h1>
+                <p class="text-muted text-truncate">Enter your health metrics below for an instant risk evaluation</p>
+
+                {% if error %}
+                <div class="alert alert-danger mt-4 animate__animated animate__fadeIn">
+                    <h4 class="mb-0">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Error: {{ error }}
+                    </h4>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="card shadow-lg border-0 rounded-3 animate__animated animate__fadeIn mb-5 bg-light" style="background-image: linear-gradient(135deg, #f8f9fa 0%, #f8f9fa 100%);">
+                <div class="card-body text-center">
+                    <h5 class="text-primary mb-4" style="font-weight: bold;">Accurate Health Metrics Matter</h5>
+                    <p class="text-muted mb-4" style="font-size: 1.1rem;">Your health metrics play a vital role in determining your diabetes risk. Please ensure you enter them correctly.</p>
+                </div>
+
+                
+
+                <div class="card-body p-5">
+                    <form method="post" action="/diabete" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="row g-4">
+                            <div class="col-md-6 animate__animated animate__fadeInLeft">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-warning bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Number of Pregnancies">
+                                            <i class="bi bi-person-hearts text-warning"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="pregnancies" name="pregnancies" placeholder="Number of Pregnancies" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid number of pregnancies</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInRight">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-primary bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Glucose Level">
+                                            <i class="bi bi-droplet-fill text-primary"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="glucose" name="glucose" placeholder="Glucose Level" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid glucose level</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInLeft">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-danger bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Blood Pressure">
+                                            <i class="bi bi-heart-fill text-danger"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="bloodPressure" name="bloodPressure" placeholder="Blood Pressure" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid blood pressure</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInRight">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-info bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Skin Thickness">
+                                            <i class="bi bi-rulers text-info"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="skinThickness" name="skinThickness" placeholder="Skin Thickness" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid skin thickness</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInLeft">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-success bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Insulin Level">
+                                            <i class="bi bi-clipboard2-pulse-fill text-success"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="insulin" name="insulin" placeholder="Insulin Level" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid insulin level</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInRight">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-secondary bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="BMI">
+                                            <i class="bi bi-person-fill text-secondary"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="bmi" name="bmi" placeholder="BMI" step="0.1" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid BMI</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInLeft">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-purple bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Diabetes Pedigree Function">
+                                            <i class="bi bi-diagram-3 text-purple"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction" placeholder="Diabetes Pedigree Function" step="0.001" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid diabetes pedigree function</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 animate__animated animate__fadeInRight">
+                                <div class="form-floating input-group-hover">
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-dark bg-opacity-10" data-bs-toggle="tooltip" data-bs-placement="left" title="Age">
+                                            <i class="bi bi-calendar-event text-dark"></i>
+                                        </span>
+                                        <input type="number" class="form-control" id="age" name="age" placeholder="Age" min="0" required>
+                                        <div class="invalid-feedback text-truncate">Please enter a valid age</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-gradient w-100 py-3 mt-3 text-truncate">
+                                    <i class="bi bi-shield-check me-2"></i>
+                                    Get Your Risk Assessment
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {% if output %}
+            <div class="card shadow-lg border-0 rounded-3 animate__animated animate__fadeIn mb-5">
+                <div class="card-header bg-gradient text-white text-center py-4" 
+                     style="{% if output == 'diabetic' %}background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%){% else %}background: linear-gradient(135deg, #20bf55 0%, #01baef 100%){% endif %}">
+                    <div class="header-icons d-flex justify-content-center gap-4 mb-3">
+                        <div class="icon-wrapper">
+                            <i class="bi {% if output == 'diabetic' %}bi-exclamation-circle{% else %}bi-check-circle{% endif %} text-white" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-white mb-0">Assessment Result</h3>
+                </div>
+                <div class="card-body p-5 text-center">
+                    <div class="result-icon mb-4">
+                        <i class="bi {% if output == 'diabetic' %}bi-heart-pulse text-danger{% else %}bi-heart-fill text-success{% endif %}" style="font-size: 4rem;"></i>
+                    </div>
+                    <h2 class="mb-4">You are predicted to be <span class="fw-bold {% if output == 'diabetic' %}text-danger{% else %}text-success{% endif %}">{{ output }}</span></h2>
+                    {% if output == 'diabetic' %}
+                    <div class="alert alert-warning">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Please consult with a healthcare professional for proper medical advice and further evaluation.
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="mb-3">Recommended Next Steps:</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="bi bi-1-circle me-2"></i>Schedule an appointment with your doctor</li>
+                            <li class="list-group-item"><i class="bi bi-2-circle me-2"></i>Monitor your blood sugar regularly</li>
+                            <li class="list-group-item"><i class="bi bi-3-circle me-2"></i>Maintain a healthy diet and exercise routine</li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-success">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Keep maintaining your healthy lifestyle! Regular check-ups are still recommended.
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="mb-3">Healthy Living Tips:</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="bi bi-1-circle me-2"></i>Continue regular exercise</li>
+                            <li class="list-group-item"><i class="bi bi-2-circle me-2"></i>Maintain a balanced diet</li>
+                            <li class="list-group-item"><i class="bi bi-3-circle me-2"></i>Get regular health check-ups</li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+        .btn-gradient {
+            background: linear-gradient(135deg, #20bf55 0%, #01baef 100%);
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(32,191,85,0.4);
+            color: white;
+            animation: pulse 1.5s infinite;
+        }
+
+        .icon-wrapper {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-wrapper:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .form-control {
+            border-radius: 0 15px 15px 0;
+            border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+
+        .input-group-text {
+            border-radius: 15px 0 0 15px;
+            border: 1px solid #ced4da;
+            transition: all 0.3s ease;
+        }
+
+        .input-group-hover:hover .form-control,
+        .input-group-hover:hover .input-group-text {
+            border-color: #80bdff;
+            box-shadow: 0 0 10px rgba(0,123,255,0.2);
+        }
+
+        .card {
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #20bf55 0%, #01baef 100%);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #1da84a 0%, #019ed0 100%);
+        }
+
+        .form-floating label {
+            width: calc(100% - 40px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .text-truncate {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .list-group-item {
+            border-left: none;
+            border-right: none;
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .list-group-item:hover {
+            background-color: rgba(32,191,85,0.1);
+            transform: translateX(10px);
+        }
+    </style>
+
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl, {
+                delay: { show: 100, hide: 100 }
+            })
+        })
+
+        (() => {
+            'use strict'
+            const forms = document.querySelectorAll('.needs-validation')
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+</div>
+
+{% endblock body %}

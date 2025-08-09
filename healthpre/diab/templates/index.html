@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+<div class="position-relative p-5 text-center text-muted bg-body rounded-5 animate__animated animate__fadeIn">
+    <div class="row align-items-center g-5 py-5">
+      <div class="col-lg-6 animate__animated animate__slideInLeft">
+        <h1 class="display-4 fw-bold text-success lh-1 mb-3 animate__animated animate__pulse animate__infinite animate__slower">Disease Prediction System</h1>
+        <h2 class="text-black mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.5s">Your Health, Our Priority</h2>
+        <p class="lead text-muted mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.7s">Our advanced machine learning model helps predict disease risk by analyzing key health indicators. Early detection can significantly improve health outcomes and quality of life. Understanding your risk factors is the first step toward better health management.</p>
+      </div>
+      <div class="col-lg-6 animate__animated animate__slideInRight">
+        <div class="d-flex justify-content-center mb-5">
+          <i class="bi bi-activity text-success" style="font-size: 8rem;"></i>
+          <i class="bi bi-heart-pulse-fill text-danger mx-4" style="font-size: 8rem;"></i>
+          <i class="bi bi-clipboard2-pulse text-primary" style="font-size: 8rem;"></i>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="d-flex justify-content-center gap-5 animate__animated animate__fadeInUp">
+          <a href="/prediction" class="btn btn-primary btn-lg px-5 py-3 btn-hover-effect rounded-pill animate__animated animate__bounceIn" style="animation-delay: 0.3s">
+            <i class="bi bi-graph-up me-2"></i>Get Your Prediction
+          </a>
+          <a href="/about" class="btn btn-success btn-lg px-5 py-3 btn-hover-effect rounded-pill animate__animated animate__bounceIn" style="animation-delay: 0.6s">
+            <i class="bi bi-info-circle me-2"></i>Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<style>
+.btn-hover-effect {
+    transition: all 0.3s ease;
+}
+
+.btn-hover-effect:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.image-hover-effect {
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.main-image, .overlay-image {
+    transition: all 0.5s ease;
+}
+
+.image-hover-effect:hover .main-image {
+    transform: scale(1.05);
+}
+
+.image-hover-effect:hover .overlay-image {
+    opacity: 1 !important;
+}
+</style>
+
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom text-center mb-5">Disease Statistics</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn">
+                <div class="card-body">
+                    <h5 class="card-title">Average Age</h5>
+                    <p class="card-text display-4 text-primary">45</p>
+                    <p class="card-text text-muted">Years</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn" style="animation-delay: 0.2s">
+                <div class="card-body">
+                    <h5 class="card-title">Average BMI</h5>
+                    <p class="card-text display-4 text-success">32.0</p>
+                    <p class="card-text text-muted">kg/m²</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn" style="animation-delay: 0.4s">
+                <div class="card-body">
+                    <h5 class="card-title">Average Glucose Level</h5>
+                    <p class="card-text display-4 text-danger">120</p>
+                    <p class="card-text text-muted">mg/dL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom text-center mb-5 position-relative">
+        <i class="bi bi-robot me-2 text-primary"></i>
+        AI and Machine Learning in Healthcare
+    </h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="bi bi-clipboard2-pulse fs-1 text-success"></i>
+                    </div>
+                    <h5 class="card-title fw-bold text-success">Revolutionizing Diagnostics</h5>
+                    <p class="card-text">AI and ML algorithms can analyze vast amounts of medical data to identify patterns and predict disease outcomes with high accuracy. This leads to early diagnosis and timely intervention, improving patient outcomes.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn" style="animation-delay: 0.2s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="bi bi-person-lines-fill fs-1 text-info"></i>
+                    </div>
+                    <h5 class="card-title fw-bold text-info">Personalized Treatment Plans</h5>
+                    <p class="card-text">Machine learning models can tailor treatment plans based on individual patient data, ensuring that each patient receives the most effective therapy for their specific condition.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn" style="animation-delay: 0.4s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="bi bi-graph-up-arrow fs-1 text-warning"></i>
+                    </div>
+                    <h5 class="card-title fw-bold text-warning">Predictive Analytics</h5>
+                    <p class="card-text">By analyzing historical health data, AI can predict future health risks and suggest preventive measures, helping to reduce the incidence of chronic diseases and improve overall public health.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 text-center animate__animated animate__zoomIn" style="animation-delay: 0.6s">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <i class="bi bi-search-heart fs-1 text-danger"></i>
+                    </div>
+                    <h5 class="card-title fw-bold text-danger">Enhanced Research</h5>
+                    <p class="card-text">AI accelerates medical research by quickly processing and analyzing large datasets, identifying potential new treatments, and optimizing clinical trials, leading to faster medical advancements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container px-4 py-5">
+    <h2 class="pb-2 border-bottom text-center mb-5">Why Choose Our Disease Prediction Model?</h2>
+
+    <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+      <div class="col d-flex flex-column align-items-start gap-2">
+        <h2 class="fw-bold text-primary">Empowering You With Advanced Healthcare Technology</h2>
+        <p class="text-body-secondary fs-5">Our state-of-the-art prediction model combines medical expertise with machine learning to provide accurate risk assessments. We analyze multiple health parameters to give you a comprehensive understanding of your disease risk profile.</p>
+        <div class="d-flex align-items-center mb-3">
+          <div class="bg-primary-subtle p-3 rounded-circle me-3">
+            <i class="bi bi-shield-check text-primary fs-4"></i>
+          </div>
+          <div>
+            <h5 class="mb-0">98% Accuracy Rate</h5>
+            <p class="mb-0 text-muted">Validated through extensive testing</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center mb-4">
+          <div class="bg-success-subtle p-3 rounded-circle me-3">
+            <i class="bi bi-people text-success fs-4"></i>
+          </div>
+          <div>
+            <h5 class="mb-0">10,000+ Users</h5>
+            <p class="mb-0 text-muted">Trust our prediction system</p>
+          </div>
+        </div>
+        <a href="/prediction" class="btn btn-primary btn-lg">Start Your Assessment Now</a>
+      </div>
+
+      <div class="col">
+        <div class="row row-cols-1 row-cols-sm-2 g-4">
+          <div class="col d-flex flex-column gap-2">
+            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 p-3">
+              <i class="bi bi-lightning-charge"></i>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">Instant Results</h4>
+            <p class="text-body-secondary">Get your prediction report within seconds of submitting your health data.</p>
+          </div>
+
+          <div class="col d-flex flex-column gap-2">
+            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 p-3">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">High Precision</h4>
+            <p class="text-body-secondary">Advanced algorithms trained on extensive medical datasets ensure reliable predictions.</p>
+          </div>
+
+          <div class="col d-flex flex-column gap-2">
+            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 p-3">
+              <i class="bi bi-shield-lock"></i>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">Data Security</h4>
+            <p class="text-body-secondary">Your health information is encrypted and protected with industry-standard security measures.</p>
+          </div>
+
+          <div class="col d-flex flex-column gap-2">
+            <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3 p-3">
+              <i class="bi bi-person-check"></i>
+            </div>
+            <h4 class="fw-semibold mb-0 text-body-emphasis">User-Friendly</h4>
+            <p class="text-body-secondary">Simple and intuitive interface designed for everyone, regardless of technical expertise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock body %}

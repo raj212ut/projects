@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Disease Prediction{% endblock title %}
+
+{% block body %}
+<div class="container py-5 animate__animated animate__fadeIn">
+    <h2 class="text-center mb-4" style="color: #2c3e50; font-weight: bold;">Symptom-Based Disease Prediction</h2>
+
+    <div class="card shadow-lg animate__animated animate__slideInRight" style="border-radius: 15px;">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <img src="https://img.icons8.com/color/96/000000/stethoscope.png" alt="Stethoscope Icon" class="img-fluid mb-3">
+                <p class="lead">Enter your symptoms below to get a disease prediction.</p>
+            </div>
+
+            <form method="post" class="mb-4">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="symptoms" class="form-label"><i class="bi bi-clipboard-heart me-2"></i><b>Symptoms:</b></label>
+                    <textarea class="form-control" id="symptoms" name="symptoms" rows="3" placeholder="Enter your symptoms separated by commas (e.g., headache, fever, cough)"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(45deg, #27ae60, #218c5a); border: none;">
+                        <i class="bi bi-magic me-2"></i>Predict Disease
+                    </button>
+                </div>
+            </form>
+
+            {% if error_message %}
+            <div class="alert alert-danger mt-4 animate__animated animate__fadeIn">
+                <h4 class="mb-0">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    Error: {{ error_message }}
+                </h4>
+            </div>
+            {% endif %}
+
+            {% if Disease %}
+            <div class="mt-5 p-4 bg-light rounded shadow-sm animate__animated animate__fadeIn">
+                <h3 class="text-center mb-4" style="color: #3498db;"><i class="bi bi-check-circle-fill me-2 text-success"></i>Prediction Result</h3>
+                <div class="mb-3">
+                    <h4 style="color: #e74c3c;"><i class="bi bi-heart-pulse-fill me-2"></i>Predicted Disease: <strong>{{ Disease }}</strong></h4>
+                </div>
+
+                <div class="mb-3">
+                    <h5><i class="bi bi-file-earmark-text me-2"></i>Description:</h5>
+                    <p>{{ Description }}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h5><i class="bi bi-exclamation-triangle-fill me-2 text-warning"></i>Precautions:</h5>
+                    <ul class="list-unstyled">
+                        {% for precaution in Precautions %}
+                        <li><i class="bi bi-arrow-right-circle me-1 text-secondary"></i> {{ precaution }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h5><i class="bi bi-prescription me-2 text-info"></i>Medications:</h5>
+                    <ul class="list-unstyled">
+                        {% for medication in Medications %}
+                        <li><i class="bi bi-arrow-right-circle me-1 text-secondary"></i> {{ medication }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="mb-3">
+                    <h5><i class="bi bi-bicycle me-2 text-success"></i>Recommended Workouts:</h5>
+                    <ul class="list-unstyled">
+                        {% for workout in Workouts %}
+                        <li><i class="bi bi-arrow-right-circle me-1 text-secondary"></i> {{ workout }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div>
+                    <h5><i class="bi bi-apple me-2" style="color: #27ae60;"></i>Recommended Diets:</h5>
+                    <ul class="list-unstyled">
+                        {% for diet in Diets %}
+                        <li><i class="bi bi-arrow-right-circle me-1 text-secondary"></i> {{ diet }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock body %}

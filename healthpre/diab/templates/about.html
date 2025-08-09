@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block title %}Revolutionize Your Health Journey{% endblock title %}
+
+{% block body %}
+<div class="position-relative p-5 text-center bg-gradient-primary animate__animated animate__fadeIn" style="font-family: 'Open Sans', sans-serif; background: linear-gradient(135deg, #007bff, #00b8d4);">
+    <div class="icon-container mb-4 animate__animated animate__bounceIn d-flex justify-content-center" style="font-size: 3rem; gap: 2rem;">
+        <i class="bi bi-heart-pulse-fill text-white hover-pop" data-bs-toggle="tooltip" title="Heart Health Monitoring"></i>
+        <i class="bi bi-activity text-white hover-pop" data-bs-toggle="tooltip" title="Metabolic Analysis"></i>
+        <i class="bi bi-clipboard2-pulse text-white hover-pop" data-bs-toggle="tooltip" title="Clinical Insights"></i>
+        <i class="bi bi-graph-up-arrow text-white hover-pop" data-bs-toggle="tooltip" title="Progress Tracking"></i>
+    </div>
+    <h1 class="text-white animate__animated animate__fadeInDown" style="animation-delay: 0.3s; font-size: 3rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Take Control of Your Health Today</h1>
+    <p class="lead text-white-50 mb-5 animate__animated animate__fadeIn" style="animation-delay: 0.4s;">Empowering you with AI-driven insights for a healthier tomorrow</p>
+    
+    <div class="col-lg-10 mx-auto mb-4 animate__animated animate__fadeIn" style="animation-delay: 0.5s;">
+        <div class="health-priority-card p-4 mb-4 rounded-4 shadow-lg bg-white" data-bs-toggle="collapse" href="#healthMission">
+            <div class="d-flex align-items-center justify-content-center">
+                <i class="bi bi-shield-check fs-1 text-primary me-3"></i>
+                <h3 class="text-primary mb-0">Your Personalized Health Journey</h3>
+            </div>
+            <div class="collapse show mt-3" id="healthMission">
+                <div class="text-center">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="d-flex align-items-center mb-3 p-3 rounded-3 bg-light">
+                                    <i class="bi bi-arrow-right-circle-fill text-primary me-3 fs-3"></i>
+                                    <div>
+                                        <h5 class="text-primary mb-1">Cutting-edge AI Health Analysis</h5>
+                                        <p class="text-muted mb-0 small">Our advanced AI algorithms process your health data to provide precise, actionable insights tailored to your unique physiology.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center mb-3 p-3 rounded-3 bg-light">
+                                    <i class="bi bi-arrow-right-circle-fill text-success me-3 fs-3"></i>
+                                    <div>
+                                        <h5 class="text-success mb-1">Customized Wellness Strategies</h5>
+                                        <p class="text-muted mb-0 small">Receive personalized plans that adapt to your lifestyle, goals, and health conditions for sustainable well-being.</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center p-3 rounded-3 bg-light">
+                                    <i class="bi bi-arrow-right-circle-fill text-info me-3 fs-3"></i>
+                                    <div>
+                                        <h5 class="text-info mb-1">Real-time Health Monitoring</h5>
+                                        <p class="text-muted mb-0 small">Track your vital signs and health metrics 24/7 with instant alerts and progress reports to keep you informed and in control.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4 interactive-features">
+            <div class="col-md-6">
+                <div class="h-100 p-4 rounded-4 shadow-sm hover-elevate bg-white position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <div class="bg-primary text-white rounded-circle p-2 fs-5"><i class="bi bi-clipboard2-heart"></i></div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 mt-4">
+                        <div class="bg-primary-subtle p-3 rounded-circle me-3">
+                            <i class="bi bi-heartbeat text-primary fs-4"></i>
+                        </div>
+                        <h4 class="mb-0 text-primary">Comprehensive Health Analysis</h4>
+                    </div>
+                    <div class="text-start">
+                        <p class="text-muted mb-3">
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Instant health insights<br>
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>20+ vital parameters<br>
+                            <i class="bi bi-check-circle-fill text-success me-2"></i>Personalized recommendations
+                        </p>
+                    </div>
+                    <div class="alert alert-info bg-light border-primary border-start-4 p-3 mb-0">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-info-circle-fill text-primary fs-4 me-3"></i>
+                            <div>
+                                <p class="mb-0 text-primary fw-medium">Explore your health metrics</p>
+                                <small class="text-muted">Click below to view detailed analysis</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapse" id="analysisDetails">
+                        <div class="pt-3 text-muted small">
+                            <i class="bi bi-dot me-1"></i>Blood Sugar Levels<br>
+                            <i class="bi bi-dot me-1"></i>Blood Pressure<br>
+                            <i class="bi bi-dot me-1"></i>Cholesterol Levels<br>
+                            <i class="bi bi-dot me-1"></i>Body Composition
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="h-100 p-4 rounded-4 shadow-sm hover-elevate bg-white position-relative">
+                    <div class="position-absolute top-0 start-50 translate-middle">
+                        <div class="bg-success text-white rounded-circle p-2 fs-5"><i class="bi bi-cpu"></i></div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 mt-4">
+                        <div class="bg-success-subtle p-3 rounded-circle me-3">
+                            <i class="bi bi-clipboard-data text-success fs-4"></i>
+                        </div>
+                        <h4 class="mb-0 text-success">AI-Powered Predictions</h4>
+                    </div>
+                    <div class="text-start">
+                        <p class="text-muted mb-3">
+                            <i class="bi bi-shield-shaded text-primary me-2"></i>100,000+ data points analyzed<br>
+                            <i class="bi bi-graph-up-arrow text-info me-2"></i>85% early detection accuracy<br>
+                            <i class="bi bi-lightning-charge text-warning me-2"></i>Instant risk assessment
+                        </p>
+                    </div>
+                    <div class="progress mb-3" style="height: 8px;">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <small class="text-muted">System confidence level</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 health-timeline">
+            <div class="timeline-step completed" data-bs-toggle="tooltip" title="Initial Setup Complete">
+                <div class="timeline-icon"><i class="bi bi-person-badge"></i></div>
+                <h5 class="fw-bold">Quick Profile Setup</h5>
+                <p class="text-muted mb-1">Just 2 minutes</p>
+                <div class="timeline-badge"><i class="bi bi-check2-all"></i></div>
+            </div>
+            <div class="timeline-step active" data-bs-toggle="tooltip" title="Current Phase">
+                <div class="timeline-icon pulse-animation"><i class="bi bi-clipboard2-pulse"></i></div>
+                <h5 class="fw-bold">Comprehensive Health Check</h5>
+                <p class="text-muted mb-1">Detailed analysis</p>
+                <div class="timeline-badge"><i class="bi bi-activity"></i></div>
+            </div>
+            <div class="timeline-step" data-bs-toggle="tooltip" title="Next Steps">
+                <div class="timeline-icon"><i class="bi bi-file-medical"></i></div>
+                <h5 class="fw-bold">Personalized Action Plan</h5>
+                <p class="text-muted mb-1">Tailored just for you</p>
+                <div class="timeline-badge"><i class="bi bi-file-earmark-text"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-container animate__animated animate__fadeIn py-5" style="animation-delay: 0.6s;">
+        <div class="health-carousel carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <i class="bi bi-quote fs-1 text-white me-3"></i>
+                        <blockquote class="blockquote mb-0">
+                            <p class="mb-0 fs-4 text-white">"Taking control of my health has never been easier. The insights are life-changing!"</p>
+                        </blockquote>
+                        <i class="bi bi-quote fs-1 text-white ms-3 rotate-180"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mt-5">
+        <a href="/prediction" class="btn btn-primary px-5 btn-hover-effect animate__animated animate__bounceIn" style="animation-delay: 0.7s;">
+            <i class="bi bi-clipboard2-pulse me-2"></i>Begin Health Audit
+        </a>
+    </div>
+
+    <div class="symmetry-container mt-5 d-flex justify-content-around">
+        <div class="decorative-circle bg-primary-subtle animate__animated animate__pulse animate__infinite"></div>
+        <div class="decorative-circle bg-success-subtle animate__animated animate__pulse animate__infinite" style="animation-delay: 0.3s"></div>
+        <div class="decorative-circle bg-danger-subtle animate__animated animate__pulse animate__infinite" style="animation-delay: 0.6s"></div>
+    </div>
+</div>
+
+<style>
+.hover-pop:hover {
+    transform: scale(1.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.health-priority-card {
+    background: rgba(255,255,255,0.95);
+    border: 2px solid #007bff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-elevate {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hover-elevate:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+}
+
+.timeline-step:hover .timeline-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0,123,255,0.2);
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(0.95); }
+}
+
+.progress-bar {
+    transition: width 1s ease-in-out;
+}
+
+[data-bs-toggle="tooltip"] {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.decorative-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.symmetry-container {
+    position: relative;
+    z-index: -1;
+}
+</style>
+
+{% endblock body %}
