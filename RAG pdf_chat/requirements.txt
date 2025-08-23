@@ -1,0 +1,11 @@
+streamlit
+sentence-transformers
+faiss-cpu
+pypdf
+transformers
+accelerate
+openai
+numpy
+torch
+uvicorn
+
